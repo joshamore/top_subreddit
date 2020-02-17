@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/joshamore/reddit_top_sub/issues"
   },
-  "homepage": "https://github.com/joshamore/reddit_top_sub#readme"
+  "homepage": "https://github.com/joshamore/reddit_top_sub#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "snoowrap": "^1.20.1"
+  }
 }
