@@ -13,4 +13,4 @@ const reddit = new snoowrap({
     password: process.env.R_PASSWORD
   });
 
-reddit.getUser()
+console.log(reddit.getUser('joshamoreyo'));
