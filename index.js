@@ -32,13 +32,15 @@ app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 const person = reddit.getUser(process.env.REDDIT_PERSON);
 
 // Getting submissions for reddit user.
-person.getSubmissions({limit: 50}).then((content, fail) => {
+person.getSubmissions({limit: 50}).then((content) => {
   // Printing title of submissions and score
-  let titles = [];
-  let scores = [];
+  let userRedditData = {
+    titles: [],
+    scores: []
+  };
 
   for (let i = 0; i < content.length; i++) {
-    titles.push(content[i].title);
-    scores.push(content[i].score);
+    userRedditData.titles.push(content[i].title);
+    userRedditData.scores.push(content[i].score);
   }
 });
