@@ -18,10 +18,15 @@ const reddit = new snoowrap({
 const person = reddit.getUser(process.env.REDDIT_PERSON);
 
 // Getting submissions for reddit user.
-person.getSubmissions().then((content, fail) => {
+person.getSubmissions({limit: 50}).then((content, fail) => {
   // Printing title of submissions and score
+
+  const titles = [];
+  const scores = [];
+  
   for (let i = 0; i < content.length; i++) {
-    console.log(content[i].title);
-    console.log(`Score: ${content[i].score}`)
+    titles.push(content[i].title);
+    scores.push(content[i].score);
   }
+
 });
