@@ -30,19 +30,22 @@ app.get('/data', (req, res) => {
 // Getting promise of specified reddit user
   const person = reddit.getUser(process.env.REDDIT_PERSON);
   // Getting submissions for reddit user.
-  person.getSubmissions({limit: 50}).then((content) => {
+  person.getSubmissions({limit: 60}).then((content) => {
     // Printing title of submissions and score
     let userRedditData = {
       titles: [],
+      subreddits: [],
       scores: []
     };
-    // Pushing content to object.
+
+    // Pushing elements to object.
     for (let i = 0; i < content.length; i++) {
       userRedditData.titles.push(content[i].title);
+      userRedditData.subreddits.push(content[i].subreddit);
       userRedditData.scores.push(content[i].score);
     }
 
-    return res.json(userRedditData);
+    res.json(userRedditData);
   }); 
 });
 
