@@ -1,6 +1,7 @@
 'use strict'
 
 const express = require('express');
+const path = require('path');
 const snoowrap = require('snoowrap');
 require('dotenv').config()
 
@@ -16,9 +17,17 @@ const reddit = new snoowrap({
 // Creates express app
 const app = express();
 
+// Serves static files
+app.use(express.static('static'))
+
 // Home route
 app.get('/', (req, res) => {
-  res.json("hey");
+  res.sendFile(path.join(__dirname + '/static/index.html'))
+});
+
+// data route
+app.get('/data', (req, res) => {
+  res.json();
 });
 
 // Uses port from environment or 500 if none.
@@ -38,7 +47,7 @@ person.getSubmissions({limit: 50}).then((content) => {
     titles: [],
     scores: []
   };
-
+  // Pushing content to object.
   for (let i = 0; i < content.length; i++) {
     userRedditData.titles.push(content[i].title);
     userRedditData.scores.push(content[i].score);
