@@ -27,7 +27,23 @@ app.get('/', (req, res) => {
 
 // data route
 app.get('/data', (req, res) => {
-  res.json();
+// Getting promise of specified reddit user
+  const person = reddit.getUser(process.env.REDDIT_PERSON);
+  // Getting submissions for reddit user.
+  person.getSubmissions({limit: 50}).then((content) => {
+    // Printing title of submissions and score
+    let userRedditData = {
+      titles: [],
+      scores: []
+    };
+    // Pushing content to object.
+    for (let i = 0; i < content.length; i++) {
+      userRedditData.titles.push(content[i].title);
+      userRedditData.scores.push(content[i].score);
+    }
+
+    return res.json(userRedditData);
+  }); 
 });
 
 // Uses port from environment or 500 if none.
@@ -36,20 +52,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 
 
-// TESTING
-// Getting promise of specified reddit user
-const person = reddit.getUser(process.env.REDDIT_PERSON);
 
-// Getting submissions for reddit user.
-person.getSubmissions({limit: 50}).then((content) => {
-  // Printing title of submissions and score
-  let userRedditData = {
-    titles: [],
-    scores: []
-  };
-  // Pushing content to object.
-  for (let i = 0; i < content.length; i++) {
-    userRedditData.titles.push(content[i].title);
-    userRedditData.scores.push(content[i].score);
-  }
-});
