@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 // data route
 app.get('/data', (req, res) => {
-// Getting promise of specified reddit user
+  // Getting promise of specified reddit user
   const person = reddit.getUser(process.env.REDDIT_PERSON);
   // Getting submissions for reddit user.
   person.getSubmissions({limit: 60}).then((content) => {
