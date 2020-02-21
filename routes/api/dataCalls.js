@@ -15,7 +15,7 @@ const reddit = new snoowrap({
 // Home route
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/static/index.html'))
-});
+}); 
   
 // data route
 router.get('/data', (req, res) => {
