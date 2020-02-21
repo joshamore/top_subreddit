@@ -13,7 +13,7 @@ function getData() {
         }
     };
 
-    xhr.open('GET', 'http://localhost:5000/data');
+    xhr.open('GET', 'http://localhost:5000/api/data');
     xhr.send();
 }
 
