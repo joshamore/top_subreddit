@@ -6,7 +6,7 @@ function getData() {
     xhr.onload = () => {
         // Process returned data
         if (xhr.status >= 200 && xhr.status < 300) {
-            console.log('success!', xhr);
+            console.log('success!', xhr);   
             dataRender(xhr.response);
         } else {
             console.log('The request failed!');
@@ -22,7 +22,6 @@ function dataRender(redditData) {
     document.getElementById("getSubData").innerHTML = redditData;
 }
 
-// Click event
-onload = () => {
-    document.getElementById("getSubData").addEventListener("click", getData());
-}
+
+// Triggering call for data once page has loaded.
+document.addEventListener("DOMContentLoaded", getData());
