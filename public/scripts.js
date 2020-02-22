@@ -29,9 +29,9 @@ function dataRender(redditData) {
         element: '#viz',
         title: "Top subreddits",
         roughness: 1,
-        margin: {top: 50, right: 20, bottom: 70, left: 120},
-        width: window.innerWidth / 1,
-        padding: 0.2,
+        margin: {top: 50, right: 50, bottom: 70, left: 50},
+        width: window.innerWidth / 2,
+        padding: 0.1,
         data: {labels: cleanedData.subreddits, values: cleanedData.scores}
     });
 }
