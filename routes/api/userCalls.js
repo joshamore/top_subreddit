@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
 }); 
   
 // Route to get reddit data.
-router.get('/data', (req, res) => {
-    reddit.getUserHistory(process.env.R_USERNAME, 100).then((redditUserData) => {
+router.post('/data', (req, res) => {
+    reddit.getUserHistory(process.env.REDDIT_PERSON, 100).then((redditUserData) => {
         res.json(redditUserData);
     });
 }); 

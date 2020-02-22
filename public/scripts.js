@@ -16,15 +16,47 @@ function getData() {
         }
     };
 
-    xhr.open('GET', 'http://localhost:5000/api/data');
+    xhr.open('POST', 'http://localhost:5000/api/data');
     xhr.send();
 }
 
 // Renders data
 function dataRender(redditData) {
-    document.getElementById("redditData").innerHTML = redditData;
+    const cleanedData = cleanData(JSON.parse(redditData));
+
+    // Creates chart
+    new roughViz.Bar({
+        element: '#viz',
+        title: "Top subreddits",
+        roughness: 1,
+        margin: {top: 50, right: 20, bottom: 70, left: 120},
+        width: window.innerWidth / 1,
+        padding: 0.2,
+        data: {labels: cleanedData.subreddits, values: cleanedData.scores}
+    });
 }
 
+// Clean data
+function cleanData(redditData) {
+    let cleanedData = {
+        subreddits: [],
+        scores: []
+    };
+
+    for (let i = 0; i < redditData.subreddits.length; i++) {
+        const check = cleanedData.subreddits.indexOf(redditData.subreddits[i]);
+
+        if (check === -1) {
+            console.log("new");
+            cleanedData.subreddits.push(redditData.subreddits[i]);
+            cleanedData.scores.push(redditData.scores[i]);
+        } else {
+            cleanedData.scores[check] += redditData.scores[i];
+            console.log("old");
+        }
+    }
+    return cleanedData;
+}
 
 // Once DOM loaded, add listener to get data based on click
 document.addEventListener("DOMContentLoaded", () => {
