@@ -1,5 +1,8 @@
 // AJAX call for data
 function getData() {
+    // Updating HTML to remove button
+    document.getElementById("redditData").innerHTML = '<p class="text-center">Reddit data coming....</p>';
+
     const xhr = new XMLHttpRequest();
 
     // Setup listener to process completed requests
@@ -19,9 +22,11 @@ function getData() {
 
 // Renders data
 function dataRender(redditData) {
-    document.getElementById("getSubData").innerHTML = redditData;
+    document.getElementById("redditData").innerHTML = redditData;
 }
 
 
-// Triggering call for data once page has loaded.
-document.addEventListener("DOMContentLoaded", getData());
+// Once DOM loaded, add listener to get data based on click
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("redditData").addEventListener("click", getData);
+});
