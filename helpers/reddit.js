@@ -38,8 +38,8 @@ module.exports = {
                 // Pushing elements to object.
                 for (let i = 0; i < content.length; i++) {
                     userRedditData.titles.push(content[i].title);
-                    userRedditData.subreddits.push(content[i].subreddit);
-                    userRedditData.scores.push(content[i].score);
+                    userRedditData.subreddits.push(content[i].subreddit["display_name"]);
+                    userRedditData.scores.push(content[i].score); 
                 }
                 
                 // Resolving promise once data has been returned.
