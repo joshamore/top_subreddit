@@ -9,7 +9,7 @@ require('dotenv').config()
 const app = express();
 
 // Pull in routes file.
-app.use('/api/', require('./routes/api/dataCalls'));
+app.use('/api/', require('./routes/api/userCalls'));
 
 // Serves static files
 app.use(express.static('static'))
