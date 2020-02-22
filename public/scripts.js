@@ -25,15 +25,13 @@ function dataRender(redditData) {
     const cleanedData = cleanData(JSON.parse(redditData));
 
     // Creates chart
-    const chartData = {
+    const data = {
         labels: cleanedData.subreddits,
-        series: [cleanedData.scores]
-    };  
-    const options = {
-    }
-    new Chartist.Bar('.ct-chart', chartData);     
-}
+        series: [cleanedData.scores],
+    };
 
+    new Chartist.Bar('.ct-chart', data);
+}
 // Clean data
 function cleanData(redditData) {
     let cleanedData = {
