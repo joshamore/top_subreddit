@@ -25,6 +25,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             // Getting promise of specified reddit user
             const userPromise = reddit.getUser(redditUser);
+
             // Getting submissions for reddit user.
             userPromise.getSubmissions({limit: safeLimit}).then((content) => {
                 // Printing title of submissions and score
