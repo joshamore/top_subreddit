@@ -1,7 +1,7 @@
 /*
-    Centers chart    
+    Centers data table
 */
-#viz {
-    max-width: 500px;
-    margin: auto;
+#dataTable {
+    margin-left: auto; 
+    margin-right: auto;
 }

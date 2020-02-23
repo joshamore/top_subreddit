@@ -24,8 +24,21 @@ function getData() {
 function dataRender(redditData) {
     const cleanedData = cleanData(JSON.parse(redditData));
 
-    // Creates Data table
-    // TODO
+    // Creating table
+    document.getElementById("viz").innerHTML = '<table id="dataTable"></table>'
+
+    // Getting selector for the table
+    let table = document.getElementById("dataTable");
+
+    // Populating reddit data
+    for (let i = 0; i < cleanedData.scores.length; i++) {
+        let row = table.insertRow(i)
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+    
+        cell1.innerHTML = cleanedData.subreddits[i];
+        cell2.innerHTML = cleanedData.scores[i];
+    }
 }
 // Clean data
 function cleanData(redditData) {
