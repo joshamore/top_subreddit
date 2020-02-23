@@ -25,17 +25,13 @@ function dataRender(redditData) {
     const cleanedData = cleanData(JSON.parse(redditData));
 
     // Creates chart
-    new roughViz.Bar({
-        element: '#viz',
-        title: "Top subreddits",
-        roughness: 1,
-        margin: {top: 50, right: 50, bottom: 70, left: 50},
-        width: window.innerWidth / 2,
-        padding: 0.1,
-        data: {labels: cleanedData.subreddits, values: cleanedData.scores}
-    });
-}
+    const data = {
+        labels: cleanedData.subreddits,
+        series: [cleanedData.scores],
+    };
 
+    new Chartist.Bar('.ct-chart', data);
+}
 // Clean data
 function cleanData(redditData) {
     let cleanedData = {
