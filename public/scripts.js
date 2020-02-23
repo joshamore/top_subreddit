@@ -25,7 +25,7 @@ function dataRender(redditData) {
     const cleanedData = cleanData(JSON.parse(redditData));
 
     // Creates Data table
-    let table = new Tabulator("#viz", {});
+    // TODO
 }
 // Clean data
 function cleanData(redditData) {
