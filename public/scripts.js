@@ -29,7 +29,6 @@ function dataRender(redditData) {
         labels: cleanedData.subreddits,
         series: [cleanedData.scores],
     };
-
     new Chartist.Bar('.ct-chart', data);
 }
 // Clean data
