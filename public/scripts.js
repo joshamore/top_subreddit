@@ -1,10 +1,3 @@
-// Getting form element
-let form;
-
-document.addEventListener("DOMContentLoaded", () => {
-    form = document.getElementById("redditData");
-});
-
 // AJAX call for data
 function getData() {
     // Storing input data
@@ -71,6 +64,14 @@ function cleanData(redditData) {
     }
     return cleanedData;
 }
+
+
+// Getting form element
+let form;
+// Getting form element after pageload
+document.addEventListener("DOMContentLoaded", () => {
+    form = document.getElementById("redditData");
+});
 
 // Once DOM loaded, add listener to get data based on click
 document.addEventListener("DOMContentLoaded", () => {
