@@ -24,12 +24,8 @@ function getData() {
 function dataRender(redditData) {
     const cleanedData = cleanData(JSON.parse(redditData));
 
-    // Creates chart
-    const data = {
-        labels: cleanedData.subreddits,
-        series: [cleanedData.scores],
-    };
-    new Chartist.Bar('.ct-chart', data);
+    // Creates Data table
+    let table = new Tabulator("#viz", {});
 }
 // Clean data
 function cleanData(redditData) {
