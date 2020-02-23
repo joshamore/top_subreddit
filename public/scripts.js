@@ -24,15 +24,15 @@ function getData() {
 function dataRender(redditData) {
     const cleanedData = cleanData(JSON.parse(redditData));
 
-    // Creating table
-    document.getElementById("viz").innerHTML = '<table id="dataTable"></table>'
-
+    // Unhide table
+    document.getElementById('dataTable').style.display = 'table';
+    
     // Getting selector for the table
     let table = document.getElementById("dataTable");
 
     // Populating reddit data
     for (let i = 0; i < cleanedData.scores.length; i++) {
-        let row = table.insertRow(i)
+        let row = table.insertRow(1 + i)
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
     
