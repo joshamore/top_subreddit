@@ -1,5 +1,15 @@
+// Getting form element
+let form;
+
+document.addEventListener("DOMContentLoaded", () => {
+    form = document.getElementById("redditData");
+});
+
 // AJAX call for data
 function getData() {
+    // Storing input data
+    const redditUsername = document.getElementById("redditUsername").value;
+    
     // Updating HTML to remove button
     document.getElementById("redditData").innerHTML = '<p class="text-center">Reddit data coming....</p>';
 
@@ -16,8 +26,10 @@ function getData() {
         }
     };
 
+    // Sending form data to server.
     xhr.open('POST', 'http://localhost:5000/api/data');
-    xhr.send();
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({ redditUsername: redditUsername }));
 }
 
 // Renders data
@@ -62,5 +74,11 @@ function cleanData(redditData) {
 
 // Once DOM loaded, add listener to get data based on click
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("redditData").addEventListener("click", getData);
+    //  When form submitted, prevent page reload and trigger get data
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        getData();
+    });
 });
+
+
