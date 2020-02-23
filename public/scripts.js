@@ -42,12 +42,10 @@ function cleanData(redditData) {
         const check = cleanedData.subreddits.indexOf(redditData.subreddits[i]);
 
         if (check === -1) {
-            console.log("new");
             cleanedData.subreddits.push(redditData.subreddits[i]);
             cleanedData.scores.push(redditData.scores[i]);
         } else {
             cleanedData.scores[check] += redditData.scores[i];
-            console.log("old");
         }
     }
     return cleanedData;
