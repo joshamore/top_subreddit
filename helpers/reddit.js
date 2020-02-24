@@ -28,6 +28,7 @@ module.exports = {
 
             // Getting submissions for reddit user.
             userPromise.getSubmissions({limit: safeLimit})
+            // If promise is successful, extracting needed parts and resolving.
             .then((content) => {
                 // Printing title of submissions and score
                 let userRedditData = {
@@ -46,6 +47,7 @@ module.exports = {
                 // Resolving promise once data has been returned.
                 resolve(userRedditData);
             })
+            // Returning an error if promise fails (the username is prob wrong)
             .catch(err => {
                 reject("Unable to get reddit username data");
             });
