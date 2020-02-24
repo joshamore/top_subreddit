@@ -5,30 +5,29 @@ function getData() {
     
     // Updating HTML to remove button
     document.getElementById("redditData").innerHTML = '<p class="text-center">Reddit data coming....</p>';
-
-    const xhr = new XMLHttpRequest();
-
-    // Setup listener to process completed requests
-    xhr.onload = () => {
-        // Process returned data
-        if (xhr.status >= 200 && xhr.status < 300) {
-            console.log('success!', xhr);   
-            dataRender(xhr.response);
-        } else {
-            console.log('The request failed! Probably a dodgy username');
-            // TODO: should update DOM to notify user of failure.
-        }
+    
+    // Setting fetch options
+    const reqOptions = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ redditUsername: redditUsername })
     };
-
-    // Sending form data to server.
-    xhr.open('POST', 'http://localhost:5000/api/data');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({ redditUsername: redditUsername }));
+    
+    // Making fetch request and sending response to dataRender
+    // TODO: add error checking if user is invalid
+    fetch('http://localhost:5000/api/data', reqOptions)
+        .then(res => res.json())
+        .then(redditData => {
+                dataRender(redditData);
+        })
+        .catch(err => console.log('ERROR: ' + err));
 }
 
 // Renders data
 function dataRender(redditData) {
-    const cleanedData = cleanData(JSON.parse(redditData));
+    const cleanedData = cleanData(redditData);
 
     // Unhide table
     document.getElementById('dataTable').style.display = 'table';
@@ -66,16 +65,10 @@ function cleanData(redditData) {
     return cleanedData;
 }
 
-
-// Getting form element
-let form;
-// Getting form element after pageload
+// Once DOM loaded, add listener to get data based
 document.addEventListener("DOMContentLoaded", () => {
-    form = document.getElementById("redditData");
-});
-
-// Once DOM loaded, add listener to get data based on click
-document.addEventListener("DOMContentLoaded", () => {
+    // Getting form element after pageload
+    let form = document.getElementById("redditData");
     //  When form submitted, prevent page reload and trigger get data
     form.addEventListener("submit", (event) => {
         event.preventDefault();
