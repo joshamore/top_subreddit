@@ -16,6 +16,7 @@ function getData() {
             dataRender(xhr.response);
         } else {
             console.log('The request failed!');
+            // TODO: should update DOM to notify user of failure.
         }
     };
 

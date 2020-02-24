@@ -19,9 +19,15 @@ router.post('/data', (req, res) => {
     const redditUsername = req.body.redditUsername;
 
     // Getting reddit data
-    reddit.getUserHistory(redditUsername, 100).then((redditUserData) => {
-        res.json(redditUserData);
-    });
+    reddit.getUserHistory(redditUsername, 100)
+        // Returning reddit user data if exists.
+        .then((redditUserData) => {
+            res.json(redditUserData);
+        })
+        // If an error is received from promise, returning 404.
+        .catch(err => {
+            res.status(404).send('Reddit Username Not Found');
+        });
 }); 
 
 // Exporting module
