@@ -66,16 +66,10 @@ function cleanData(redditData) {
     return cleanedData;
 }
 
-
-// Getting form element
-let form;
-// Getting form element after pageload
+// Once DOM loaded, add listener to get data based
 document.addEventListener("DOMContentLoaded", () => {
-    form = document.getElementById("redditData");
-});
-
-// Once DOM loaded, add listener to get data based on click
-document.addEventListener("DOMContentLoaded", () => {
+    // Getting form element after pageload
+    let form = document.getElementById("redditData");
     //  When form submitted, prevent page reload and trigger get data
     form.addEventListener("submit", (event) => {
         event.preventDefault();
