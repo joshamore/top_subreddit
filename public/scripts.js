@@ -6,16 +6,30 @@ function getData() {
     // Updating HTML to remove button
     document.getElementById("redditData").innerHTML = '<p class="text-center">Reddit data coming....</p>';
 
-    // Getting reddit user data
-    fetch('http://localhost:5000/api/data', {
+
+    // Fetch call options
+    const options = {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ redditUsername: redditUsername })
-    })
-        .then(res => res.json())
-        .then(redditData => dataRender(redditData));
+    }
+
+    // Getting reddit user data
+    fetch('http://localhost:5000/api/data', options)
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                return null;
+            }
+        })
+        .then(redditData => console.log(redditData))
+        .catch((err) => {
+            console.log('ERROR: ' + err);
+            dataRender(null);
+        });
 }
 
 // Renders data
