@@ -15,7 +15,7 @@ function getData() {
             console.log('success!', xhr);   
             dataRender(xhr.response);
         } else {
-            console.log('The request failed!');
+            console.log('The request failed! Probably a dodgy username');
             // TODO: should update DOM to notify user of failure.
         }
     };
