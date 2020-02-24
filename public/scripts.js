@@ -6,25 +6,16 @@ function getData() {
     // Updating HTML to remove button
     document.getElementById("redditData").innerHTML = '<p class="text-center">Reddit data coming....</p>';
 
-    
-    // Making fetch request and sending response to dataRender
-    // TODO: Fix this
-    async function redditUserRequest(url, options) {
-        const response = await fetch(url, options);
-        
-        return await response.json();
-    }
-
-    // Setting fetch options
-    const redditData = redditUserRequest('http://localhost:5000/api/data', {
+    // Getting reddit user data
+    fetch('http://localhost:5000/api/data', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ redditUsername: redditUsername })
-    });
-
-    dataRender(redditData);
+    })
+        .then(res => res.json())
+        .then(redditData => dataRender(redditData));
 }
 
 // Renders data
