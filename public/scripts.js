@@ -16,29 +16,13 @@ function getData() {
     };
     
     // Making fetch request and sending response to dataRender
+    // TODO: add error checking if user is invalid
     fetch('http://localhost:5000/api/data', reqOptions)
         .then(res => res.json())
-        .then(data => dataRender(data))
-        .catch(err => console.log(err));
-
-    // // AJAX METHOD
-    // const xhr = new XMLHttpRequest();
-    // // Setup listener to process completed requests
-    // xhr.onload = () => {
-    //     // Process returned data
-    //     if (xhr.status >= 200 && xhr.status < 300) {
-    //         console.log('success!', xhr);   
-    //         dataRender(xhr.response);
-    //     } else {
-    //         console.log('The request failed! Probably a dodgy username');
-    //         // TODO: should update DOM to notify user of failure.
-    //     }
-    // };
-
-    // // Sending form data to server.
-    // xhr.open('POST', 'http://localhost:5000/api/data');
-    // xhr.setRequestHeader('Content-Type', 'application/json');
-    // xhr.send(JSON.stringify({ redditUsername: redditUsername }));
+        .then(redditData => {
+                dataRender(redditData);
+        })
+        .catch(err => console.log('ERROR: ' + err));
 }
 
 // Renders data
