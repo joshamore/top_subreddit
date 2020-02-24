@@ -25,7 +25,7 @@ function getData() {
                 return null;
             }
         })
-        .then(redditData => console.log(redditData))
+        .then(redditData => dataRender(redditData))
         .catch((err) => {
             console.log('ERROR: ' + err);
             dataRender(null);
@@ -34,6 +34,12 @@ function getData() {
 
 // Renders data
 function dataRender(redditData) {
+    // If no user data, alert client
+    if (redditData === null) {
+        document.getElementById("redditData").innerHTML = '<h2 class="text-center">Could not find user 😢</h2><p class="text-center"><a href="http://localhost:5000/">Try someone else</a>?</p>';
+    }
+    
+    // Cleaning data
     const cleanedData = cleanData(redditData);
 
     // Unhide table
