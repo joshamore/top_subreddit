@@ -37,29 +37,29 @@ function dataRender(redditData) {
     // If no user data, alert client
     if (redditData === null) {
         document.getElementById("redditData").innerHTML = '<h2 class="text-center">Could not find user 😢</h2><p class="text-center"><a href="http://localhost:5000/">Try someone else</a>?</p>';
-    }
-    
-    // Cleaning data
-    const cleanedData = cleanData(redditData);
+    } else {
+        // Compiling totals for subreddits
+        const cleanedData = compileSubreddits(redditData);
 
-    // Unhide table
-    document.getElementById('dataTable').style.display = 'table';
-    
-    // Getting selector for the table
-    let table = document.getElementById("dataTable");
+        // Unhide table
+        document.getElementById('dataTable').style.display = 'table';
+        
+        // Getting selector for the table
+        let table = document.getElementById("dataTable");
 
-    // Populating reddit data
-    for (let i = 0; i < cleanedData.scores.length; i++) {
-        let row = table.insertRow(1 + i)
-        let cell1 = row.insertCell(0);
-        let cell2 = row.insertCell(1);
-    
-        cell1.innerHTML = cleanedData.subreddits[i];
-        cell2.innerHTML = cleanedData.scores[i];
+        // Populating reddit data
+        for (let i = 0; i < cleanedData.scores.length; i++) {
+            let row = table.insertRow(1 + i)
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+        
+            cell1.innerHTML = cleanedData.subreddits[i];
+            cell2.innerHTML = cleanedData.scores[i];
+        }
     }
 }
 // Clean data
-function cleanData(redditData) {
+function compileSubreddits(redditData) {
     let cleanedData = {
         subreddits: [],
         scores: []
