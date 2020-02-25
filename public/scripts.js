@@ -58,7 +58,7 @@ function dataRender(redditData) {
         }
     }
 }
-// Clean data
+// Compile subreddit data into a single field
 function compileSubreddits(redditData) {
     let cleanedData = {
         subreddits: [],
