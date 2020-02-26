@@ -1,11 +1,10 @@
-// AJAX call for data
+// Fetching data from API
 function getData() {
-    // Storing input data
+    // Storing user input data
     const redditUsername = document.getElementById("redditUsername").value;
     
-    // Updating HTML to remove button
+    // Updating HTML while data being requested from backend
     document.getElementById("redditData").innerHTML = '<p class="text-center">Reddit data coming....</p>';
-
 
     // Fetch call options
     const options = {
@@ -32,7 +31,7 @@ function getData() {
         });
 }
 
-// Renders data
+// Renders data on view
 function dataRender(redditData) {
     // If no user data, alert client
     if (redditData === null) {
