@@ -14,14 +14,18 @@
 </head>
 
 <body>
+  <header>
     <h1 class="container text-center">Top User Subreddits</h1>
-    
+  </header>
+  
+  <section class="container text-center">
+    <p>Enter a reddit username to get their most popular subreddits (based on submission scores).</p>
+  </section>
     <form id="redditData">
       <div class="form-group">
         <label for="redditUsername">Reddit username:</label>
         <input id="redditUsername" type="text" class="form-control" name="redditUsername" value="spez">
       </div>
-
       <input class="btn btn-primary" type="submit" value="Get top Subreddits">
     </form>
 
