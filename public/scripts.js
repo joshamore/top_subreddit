@@ -55,6 +55,9 @@ function dataRender(redditData) {
             cell1.innerHTML = cleanedData.subreddits[i];
             cell2.innerHTML = cleanedData.scores[i];
         }
+
+        // Sorts table
+        sortTable(table);
     }
 }
 // Compile subreddit data into a single field
@@ -75,6 +78,40 @@ function compileSubreddits(redditData) {
         }
     }
     return cleanedData;
+}
+
+// Sorts a table (bubble sort). Agrument must be a DOM table element
+function sortTable(table) {
+    let rows, switching, i, x, y, shouldSwitch;
+
+    // Sets switching to true so while loop triggers
+    switching = true;
+
+    // Make a loop that will continue until no switching has been done
+    while (switching) {
+        // Defaut to no switch (will be updated if a switch is made)
+        switching = false;
+        // Getting table rows
+        rows = table.rows;
+        // Loops through all table rows (except headers)
+        for (i = 1; i < (rows.length - 1); i++) {
+            // Updates default of shouldSwitch
+            shouldSwitch = false;
+            // Get the two elements you want to compare, one from current row and one from the next
+            x = rows[i].getElementsByTagName("TD")[1];
+            y = rows[i + 1].getElementsByTagName("TD")[1];
+            // Check if the two rows should switch place (sorting in descending order)
+            if (Number(x.innerHTML) < Number(y.innerHTML)) {
+                shouldSwitch = true;
+                break;
+            }
+        }
+        if (shouldSwitch) {
+            // Does switch and updates switching variable to trigger another pass of loop
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }   
 }
 
 // Once DOM loaded, add listener to get data based
