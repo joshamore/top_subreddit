@@ -5,7 +5,9 @@
     width: 30em;
 }
 
-
+/*
+    Hides table until required (made visible in JS).
+*/
 #dataTable {
     display: none;
     margin-left: auto;
