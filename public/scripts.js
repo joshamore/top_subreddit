@@ -116,7 +116,7 @@ function sortTable(table) {
 
 // Once DOM loaded, add listener to get data based
 document.addEventListener("DOMContentLoaded", () => {
-    // Getting form element after pageload
+    // Storing form element
     let form = document.getElementById("redditData");
     //  When form submitted, prevent page reload and trigger get data
     form.addEventListener("submit", (event) => {
