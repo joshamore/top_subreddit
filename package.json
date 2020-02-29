@@ -12,7 +12,7 @@
     "url": "git+https://github.com/joshamore/reddit_top_sub.git"
   },
   "author": "Josh Amore",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/joshamore/reddit_top_sub/issues"
   },
