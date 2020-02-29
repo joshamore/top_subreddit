@@ -16,16 +16,13 @@ const reddit = new snoowrap({
 });
 
 module.exports = {
-    // Gets the history of a provided reddit user. Limit must not be > 1000 (hard
-    // reddit api limit). Returns a promise.
+    // Gets the history of a provided reddit user. Returns a promise.
     getUserHistory: (redditUser, historyLimit) => {
         const safeLimit = historyLimit <= 1000 ? historyLimit : 1000;
-
         // Returning a promise which will resolve with reddit user data
         return new Promise((resolve, reject) => {
             // Getting promise of specified reddit user
             const userPromise = reddit.getUser(redditUser);
-
             // Getting submissions for reddit user.
             userPromise.getSubmissions({limit: safeLimit})
             // If promise is successful, extracting needed parts and resolving.
@@ -36,14 +33,12 @@ module.exports = {
                     subreddits: [],
                     scores: []
                 };
-
                 // Pushing elements to object.
                 for (let i = 0; i < content.length; i++) {
                     userRedditData.titles.push(content[i].title);
                     userRedditData.subreddits.push(content[i].subreddit["display_name"]);
                     userRedditData.scores.push(content[i].score); 
                 }
-                
                 // Resolving promise once data has been returned.
                 resolve(userRedditData);
             })

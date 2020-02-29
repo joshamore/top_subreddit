@@ -7,19 +7,18 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-// Home route.
+// Home route
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/index.html'))
 }); 
   
-// Route to get reddit data.
+// Route to get reddit data
 // NOTE: there is a username stored here for testing: process.env.REDDIT_PERSON
 router.post('/data', (req, res) => {
     // Getting reddit username from request body
     const redditUsername = req.body.redditUsername;
-
     // Getting reddit data
-    reddit.getUserHistory(redditUsername, 100)
+    reddit.getUserHistory(redditUsername, 200)
         // Returning reddit user data if exists.
         .then((redditUserData) => {
             res.json(redditUserData);
