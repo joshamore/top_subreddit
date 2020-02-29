@@ -19,7 +19,7 @@ router.post('/data', (req, res) => {
     const redditUsername = req.body.redditUsername;
 
     // Getting reddit data
-    reddit.getUserHistory(redditUsername, 100)
+    reddit.getUserHistory(redditUsername, 200)
         // Returning reddit user data if exists.
         .then((redditUserData) => {
             res.json(redditUserData);
