@@ -2,10 +2,8 @@
 function getData() {
     // Storing user input data
     const redditUsername = document.getElementById("redditUsername").value;
-    
     // Updating HTML while data being requested from backend
     document.getElementById("redditData").innerHTML = '<p class="text-center">Reddit data coming....</p>';
-
     // Fetch call options
     const options = {
         method: 'POST',
@@ -14,7 +12,6 @@ function getData() {
         },
         body: JSON.stringify({ redditUsername: redditUsername })
     }
-
     // Getting reddit user data
     fetch('http://localhost:5000/api/data', options)
         .then((res) => {
@@ -39,34 +36,30 @@ function dataRender(redditData) {
     } else {
         // Compiling totals for subreddits
         const cleanedData = compileSubreddits(redditData);
-
-        // Unhide table
+        // Unhides table
         document.getElementById('dataTable').style.display = 'table';
-        
         // Getting selector for the table
         let table = document.getElementById("dataTable");
-
         // Populating reddit data
         for (let i = 0; i < cleanedData.scores.length; i++) {
             let row = table.insertRow(1 + i)
             let cell1 = row.insertCell(0);
             let cell2 = row.insertCell(1);
-        
             cell1.innerHTML = cleanedData.subreddits[i];
             cell2.innerHTML = cleanedData.scores[i];
         }
-
         // Sorts table
         sortTable(table);
     }
 }
+
 // Compile subreddit data into a single field
 function compileSubreddits(redditData) {
     let cleanedData = {
         subreddits: [],
         scores: []
     };
-
+    // Adds each subreddit and score to clanedData object (consolidating each subreddit with a single score)
     for (let i = 0; i < redditData.subreddits.length; i++) {
         const check = cleanedData.subreddits.indexOf(redditData.subreddits[i]);
 
@@ -83,10 +76,8 @@ function compileSubreddits(redditData) {
 // Sorts a table (bubble sort). Agrument must be a DOM table element
 function sortTable(table) {
     let rows, switching, i, x, y, shouldSwitch;
-
     // Sets switching to true so while loop triggers
     switching = true;
-
     // Make a loop that will continue until no switching has been done
     while (switching) {
         // Defaut to no switch (will be updated if a switch is made)
@@ -124,5 +115,3 @@ document.addEventListener("DOMContentLoaded", () => {
         getData();
     });
 });
-
-
