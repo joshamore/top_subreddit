@@ -31,7 +31,7 @@ function getData() {
         });
 }
 
-// Renders data on view
+// Renders data
 function dataRender(redditData) {
     // If no user data, alert client
     if (redditData === null) {
