@@ -5,7 +5,7 @@ import { FormGroup } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-export default function GetUsername() {
+export default function GetUsername({ subredditsRequested }) {
 	const useStyles = makeStyles((theme) => ({
 		container: {
 			display: "flex",
@@ -42,7 +42,11 @@ export default function GetUsername() {
 								variant="outlined"
 							/>
 							<br />
-							<Button variant="contained" color="primary">
+							<Button
+								variant="contained"
+								color="primary"
+								onClick={subredditsRequested}
+							>
 								Get Top Subreddits
 							</Button>
 						</FormGroup>
