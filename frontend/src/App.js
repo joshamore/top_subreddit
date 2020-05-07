@@ -1,36 +1,27 @@
 import React, { useState } from "react";
 import "./App.css";
 import Appbar from "./components/Appbar";
-import Spinner from "./components/Spinner";
 import GetUsername from "./components/GetUsername";
+import Subreddits from "./components/Subreddits";
 
 function App() {
 	// declaring state hooks
-	const [gettingSubreddits, setGettingSubreddits] = useState(false);
-	const [redditUser, setRedditUser] = useState("");
-	const [userHistory, setUserHistory] = useState("");
+	const [userHistory, setUserHistory] = useState({});
+	const [gotUser, setGotUser] = useState(false);
 
-	const subredditsRequested = () => {
-		setGettingSubreddits(true);
-	};
-
-	const updateRedditUser = (user) => {
-		setRedditUser(user);
+	const updateUserHistory = (history) => {
+		setGotUser(true);
+		setUserHistory(history);
 	};
 
 	return (
 		<div className="App">
 			<Appbar />
-			{gettingSubreddits ? (
-				<Spinner />
+			{gotUser ? (
+				<Subreddits />
 			) : (
-				<GetUsername
-					subredditsRequested={subredditsRequested}
-					updateRedditUser={updateRedditUser}
-				/>
+				<GetUsername updateUserHistory={updateUserHistory} />
 			)}
-
-			{redditUser ? <h1>{redditUser}</h1> : <p>Nup</p>}
 		</div>
 	);
 }
