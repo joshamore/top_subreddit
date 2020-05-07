@@ -31,6 +31,7 @@ export default function GetUsername({ updateUserHistory }) {
 	// Declaring state hooks
 	const [gettingSubreddits, setGettingSubreddits] = useState(false);
 	const [redditUser, setRedditUser] = useState("");
+	const [redditError, setRedditError] = useState("");
 
 	// Getting subreddits for a user
 	const getSubreddits = (redditUser) => {
@@ -55,13 +56,12 @@ export default function GetUsername({ updateUserHistory }) {
 				}
 			})
 			.then((redditData) => {
-				console.log(redditData);
 				setGettingSubreddits(false);
 				updateUserHistory(redditData);
 			})
 			.catch((err) => {
-				console.log(err);
 				setGettingSubreddits(false);
+				setRedditError(err.message);
 			});
 	};
 
@@ -71,9 +71,13 @@ export default function GetUsername({ updateUserHistory }) {
 				<Spinner />
 			) : (
 				<React.Fragment>
-					<Container maxWidth="sm">
-						<AlertError errorMessage="Bad" />
-					</Container>
+					{redditError ? (
+						<Container maxWidth="sm">
+							<AlertError errorMessage={redditError} />
+						</Container>
+					) : (
+						<div></div>
+					)}
 					<h1 className={classes.qHeading}>Enter a Reddit username</h1>
 					<div className={classes.container}>
 						<Grid item xs={12}>
