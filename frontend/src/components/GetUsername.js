@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import { FormGroup } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-export default function GetUsername({ subredditsRequested }) {
+export default function GetUsername({ subredditsRequested, updateRedditUser }) {
 	const useStyles = makeStyles((theme) => ({
 		container: {
 			display: "flex",
@@ -25,6 +25,8 @@ export default function GetUsername({ subredditsRequested }) {
 	}));
 	const classes = useStyles();
 
+	const [redditUser, setRedditUser] = useState("");
+
 	return (
 		<React.Fragment>
 			<h1 className={classes.qHeading}>Enter a Reddit username</h1>
@@ -39,13 +41,18 @@ export default function GetUsername({ subredditsRequested }) {
 							<TextField
 								id="outlined-basic"
 								label="Reddit Username"
+								value={redditUser}
+								onChange={(e) => setRedditUser(e.target.value)}
 								variant="outlined"
 							/>
 							<br />
 							<Button
 								variant="contained"
 								color="primary"
-								onClick={subredditsRequested}
+								onClick={() => {
+									subredditsRequested();
+									updateRedditUser(redditUser);
+								}}
 							>
 								Get Top Subreddits
 							</Button>
