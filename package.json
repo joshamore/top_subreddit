@@ -18,12 +18,16 @@
   },
   "homepage": "https://github.com/joshamore/reddit_top_sub#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "path": "^0.12.7",
-    "snoowrap": "^1.20.1"
+    "snoowrap": "^1.21.0"
   },
   "engines": {
     "node": "13.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }
