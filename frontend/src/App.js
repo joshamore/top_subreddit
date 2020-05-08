@@ -16,11 +16,20 @@ function App() {
 		setGotUser(true);
 	};
 
+	const nextUser = () => {
+		console.log("HERE");
+		setGotUser(false);
+	};
+
 	return (
 		<div className="App">
 			<Appbar />
 			{gotUser ? (
-				<Subreddits userHistory={userHistory} redditUser={redditUser} />
+				<Subreddits
+					userHistory={userHistory}
+					redditUser={redditUser}
+					nextUser={nextUser}
+				/>
 			) : (
 				<GetUsername updateUserHistory={updateUserHistory} />
 			)}
