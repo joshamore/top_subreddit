@@ -57,7 +57,7 @@ export default function GetUsername({ updateUserHistory }) {
 			})
 			.then((redditData) => {
 				setGettingSubreddits(false);
-				updateUserHistory(compileSubreddits(redditData));
+				updateUserHistory(compileSubreddits(redditData), redditUser);
 			})
 			.catch((err) => {
 				setGettingSubreddits(false);

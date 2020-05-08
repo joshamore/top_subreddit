@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import SubredditTable from "./SubredditTable";
 
-export default function Subreddits({ userHistory }) {
+export default function Subreddits({ userHistory, redditUser }) {
 	const useStyles = makeStyles((theme) => ({
 		sHeading: {
 			textAlign: "center",
@@ -13,7 +13,7 @@ export default function Subreddits({ userHistory }) {
 	return (
 		<React.Fragment>
 			<h1 className={classes.sHeading}>Subreddits</h1>
-			<SubredditTable userHistory={userHistory} />
+			<SubredditTable userHistory={userHistory} redditUser={redditUser} />
 		</React.Fragment>
 	);
 }

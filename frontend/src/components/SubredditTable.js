@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from "@material-ui/core/Container";
 import MUIDataTable from "mui-datatables";
 
-export default function SubredditTable({ userHistory }) {
-	// TODO update with actual searched username
-	const USERNAME = "Bob";
-
+export default function SubredditTable({ userHistory, redditUser }) {
 	const columns = [
 		{
 			name: "Subreddit",
@@ -26,7 +23,6 @@ export default function SubredditTable({ userHistory }) {
 	];
 
 	const data = [];
-
 	for (let i = 0; i < userHistory[0].length; i++) {
 		let dataItem = [userHistory[0][i], userHistory[1][i]];
 		data.push(dataItem);
@@ -40,9 +36,9 @@ export default function SubredditTable({ userHistory }) {
 
 	return (
 		<React.Fragment>
-			<Container maxWidth={false}>
+			<Container maxWidth="sm">
 				<MUIDataTable
-					title={`Top Subbreddits for ${USERNAME}`}
+					title={`Top Subbreddits for ${redditUser}`}
 					data={data}
 					columns={columns}
 					options={options}
