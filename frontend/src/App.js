@@ -12,7 +12,6 @@ function App() {
 	const updateUserHistory = (history) => {
 		setGotUser(true);
 		setUserHistory(history);
-		console.log(history);
 	};
 
 	return (
