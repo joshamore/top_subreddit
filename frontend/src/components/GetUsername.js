@@ -57,12 +57,29 @@ export default function GetUsername({ updateUserHistory }) {
 			})
 			.then((redditData) => {
 				setGettingSubreddits(false);
-				updateUserHistory(redditData);
+				updateUserHistory(compileSubreddits(redditData));
 			})
 			.catch((err) => {
 				setGettingSubreddits(false);
 				setRedditError(err.message);
 			});
+	};
+
+	// Compiles subreddits into an array (0 index = subreddit name and 1 index = score)
+	const compileSubreddits = (redditData) => {
+		let cleanedData = [[], []];
+		// Adds each subreddit and score to clanedData object (consolidating each subreddit with a single score)
+		for (let i = 0; i < redditData.subreddits.length; i++) {
+			const check = cleanedData[0].indexOf(redditData.subreddits[i]);
+
+			if (check === -1) {
+				cleanedData[0].push(redditData.subreddits[i]);
+				cleanedData[1].push(redditData.scores[i]);
+			} else {
+				cleanedData[1][check] += redditData.scores[i];
+			}
+		}
+		return cleanedData;
 	};
 
 	return (

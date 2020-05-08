@@ -6,20 +6,20 @@ import Subreddits from "./components/Subreddits";
 
 function App() {
 	// declaring state hooks
-	const [userHistory, setUserHistory] = useState({});
+	const [userHistory, setUserHistory] = useState([]);
 	const [gotUser, setGotUser] = useState(false);
 
 	const updateUserHistory = (history) => {
 		setGotUser(true);
 		setUserHistory(history);
-		console.log(userHistory);
+		console.log(history);
 	};
 
 	return (
 		<div className="App">
 			<Appbar />
 			{gotUser ? (
-				<Subreddits />
+				<Subreddits userHistory={userHistory} />
 			) : (
 				<GetUsername updateUserHistory={updateUserHistory} />
 			)}
