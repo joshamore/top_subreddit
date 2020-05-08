@@ -13,7 +13,7 @@ export default function Subreddits({ userHistory }) {
 	return (
 		<React.Fragment>
 			<h1 className={classes.sHeading}>Subreddits</h1>
-			<SubredditTable />
+			<SubredditTable userHistory={userHistory} />
 		</React.Fragment>
 	);
 }

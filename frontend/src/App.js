@@ -10,8 +10,8 @@ function App() {
 	const [gotUser, setGotUser] = useState(false);
 
 	const updateUserHistory = (history) => {
-		setGotUser(true);
 		setUserHistory(history);
+		setGotUser(true);
 	};
 
 	return (
