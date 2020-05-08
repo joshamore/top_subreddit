@@ -17,7 +17,7 @@ app.use("/api/", require("./routes/api/userCalls"));
 // Serves static files
 app.use(express.static("public"));
 
-// Uses port from environment or 500 if none.
+// Uses port from environment or 5000 if none.
 const PORT = process.env.PORT || 5000;
 
 // Starts server
