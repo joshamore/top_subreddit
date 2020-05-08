@@ -1,11 +1,15 @@
 "use strict";
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 require("dotenv").config();
 
 // Creates express app
 const app = express();
+
+// Serving static react files
+app.use(express.static(path.join(__dirname, "/frontend/build")));
 
 // Enabling CORS middleware
 app.use(cors());
