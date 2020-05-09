@@ -10,3 +10,4 @@ Find a reddit user's top subreddits.
 - [Express version 4.17](https://expressjs.com/)
 - [React JS 16.13](https://reactjs.org/)
 - [Reddit Wrapper](https://not-an-aardvark.github.io/snoowrap/Listing.html)
+- [Azure (hosting)](https://azure.microsoft.com/)
