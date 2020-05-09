@@ -2,7 +2,7 @@
 
 Find a reddit user's top subreddits.
 
-Check it out here: [TopSubreddit.tech](http://topsubreddit.tech).
+**Try it here: [TopSubreddit.tech](http://topsubreddit.tech)**
 
 ## Built with:
 
