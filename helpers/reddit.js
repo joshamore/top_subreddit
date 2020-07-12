@@ -46,6 +46,7 @@ module.exports = {
 				})
 				// Returning an error if promise fails (the username is prob wrong)
 				.catch((err) => {
+					console.log(err.message);
 					reject("Unable to get reddit username data");
 				});
 		});
