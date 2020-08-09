@@ -1,10 +1,12 @@
 # Top Subreddit
 
-Find the top subreddits for a user based on their Karma ⬆️. **Try it here: [TopSubreddit.tech](http://topsubreddit.tech)**
+Find the top subreddits for a user based on their Karma ⬆️.
 
 <div align="center">
 <img src="./readme_assets/topsubreddit.png">
 </div>
+
+**Try it here: [TopSubreddit.tech](http://topsubreddit.tech)**
 
 ## Built with:
 
