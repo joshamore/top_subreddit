@@ -47,7 +47,7 @@ export default function GetUsername({ updateUserHistory }) {
 			body: JSON.stringify({ redditUsername: redditUser }),
 		};
 		// Getting reddit user data
-		fetch("http://localhost:5000/api/data", options)
+		fetch("https://topsubreddit.herokuapp.com/api/data", options)
 			.then((res) => {
 				if (res.ok) {
 					return res.json();
