@@ -2,6 +2,10 @@
 
 Find a reddit user's top subreddits.
 
+<div align="center">
+<img src="./readme_assets/topsubreddit.png">
+</div>
+
 **Try it here: [TopSubreddit.tech](http://topsubreddit.tech)**
 
 ## Built with:
@@ -9,5 +13,5 @@ Find a reddit user's top subreddits.
 - [Node version 13.3](https://nodejs.org/en/)
 - [Express version 4.17](https://expressjs.com/)
 - [React JS 16.13](https://reactjs.org/)
-- [Reddit Wrapper](https://not-an-aardvark.github.io/snoowrap/Listing.html)
-- [Azure (hosting)](https://azure.microsoft.com/)
+- [Netlify (frontend deployment/CDN)](https://netlify.com)
+- [Heroku (backend deployment)](https://www.heroku.com/)
