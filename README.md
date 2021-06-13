@@ -6,7 +6,7 @@ Find the top subreddits for a user based on their Karma ⬆️.
 <img src="./readme_assets/topsubreddit.png">
 </div>
 
-**Try it here: [TopSubreddit.tech](http://topsubreddit.tech)**
+**Try it here: [TopSubreddit](http://topsubreddit.joshamore.com)**
 
 ## Built with:
 
