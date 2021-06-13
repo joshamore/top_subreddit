@@ -82,6 +82,12 @@ export default function GetUsername({ updateUserHistory }) {
 		return cleanedData;
 	};
 
+	const handleEnterPress = (e) => {
+		if (e.key === "Enter") {
+			getSubreddits(redditUser);
+		}
+	};
+
 	return (
 		<React.Fragment>
 			{gettingSubreddits ? (
@@ -110,6 +116,7 @@ export default function GetUsername({ updateUserHistory }) {
 										value={redditUser}
 										onChange={(e) => setRedditUser(e.target.value)}
 										variant="outlined"
+										onKeyDown={handleEnterPress}
 									/>
 									<br />
 									<Button
