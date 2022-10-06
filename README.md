@@ -14,4 +14,4 @@ Find the top subreddits for a user based on their Karma ⬆️.
 - [Express version 4.17](https://expressjs.com/)
 - [React JS 16.13](https://reactjs.org/)
 - [Netlify (frontend deployment/CDN)](https://netlify.com)
-- [Heroku (backend deployment)](https://www.heroku.com/)
+- [Heroku (backend deployment)](https://www.heroku.com/) -- edit: updated to a dedicated host since they're nuking 💣 the free tier
