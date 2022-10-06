@@ -25,5 +25,10 @@ router.post("/data", (req, res) => {
 		});
 });
 
+// Ping route
+router.get("/ping", (req, res) => {
+	res.send("pong");
+});
+
 // Exporting module
 module.exports = router;
