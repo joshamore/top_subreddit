@@ -3,7 +3,9 @@
 */
 const snoowrap = require("snoowrap");
 
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") {
+	require("dotenv").config();
+}
 
 // Authorising reddit script
 const reddit = new snoowrap({
